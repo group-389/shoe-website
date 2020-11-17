@@ -1,0 +1,17 @@
+.navbar{ 
+    
+}
+.nav{
+    text-decoration: underline;
+    display: flex;
+    justify-content: space-between;
+}
+#nav li{
+    display: inline;
+}
+
+.searchbar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}

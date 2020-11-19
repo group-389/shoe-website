@@ -25,7 +25,7 @@ CREATE TABLE `orderdetails` (
  KEY `orderID` (`orderID`),
  KEY `shoeID` (`shoeID`),
  CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`),
- CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`shoeID`) REFERENCES `inventory` (`shoeID`)
+ CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`shoeID`) REFERENCES `shoes` (`shoeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 orders	CREATE TABLE `orders` (

@@ -1,0 +1,51 @@
+# Privileges for `General Employee`@`%`
+
+GRANT SELECT ON *.* TO `General Employee`@`%`;
+
+GRANT ALL PRIVILEGES ON `myproject`.* TO `General Employee`@`%`;
+
+
+# Privileges for `Store Manager`@`%`
+
+GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO `Store Manager`@`%`;
+
+GRANT ALL PRIVILEGES ON `myproject`.* TO `Store Manager`@`%`;
+
+
+# Privileges for `Store Owner`@`%`
+
+GRANT ALL PRIVILEGES ON *.* TO `Store Owner`@`%` WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON `myproject`.* TO `Store Owner`@`%`;
+
+CREATE TABLE `orderdetails` (
+ `orderID` int(11) DEFAULT NULL,
+ `shoeID` int(11) DEFAULT NULL,
+ `quantity` int(11) DEFAULT NULL,
+ KEY `orderID` (`orderID`),
+ KEY `shoeID` (`shoeID`),
+ CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`orderID`) REFERENCES `orders` (`orderID`),
+ CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`shoeID`) REFERENCES `inventory` (`shoeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+orders	CREATE TABLE `orders` (
+ `orderID` int(11) NOT NULL AUTO_INCREMENT,
+ `userID` int(11) DEFAULT NULL,
+ `orderDate` datetime NOT NULL,
+ `shippedDate` datetime DEFAULT NULL,
+ `totalPrice` decimal(10,0) NOT NULL,
+ PRIMARY KEY (`orderID`),
+ KEY `userID` (`userID`),
+ CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3000 DEFAULT CHARSET=utf8mb4
+
+users	CREATE TABLE `users` (
+ `userID` int(11) NOT NULL AUTO_INCREMENT,
+ `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+ `userpassword` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+ `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+ `shippingAddress` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `BillingAddress` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+ PRIMARY KEY (`userID`),
+ UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci

@@ -2,7 +2,7 @@
     define('USER', 'root'); //replace with coresponding info
     define('PASSWORD', '');//replace with coresponding info
     define('HOST', 'localhost');//replace with coresponding info
-    define('DATABASE', 'replace with name of database');
+    define('DATABASE', 'shoeshop');
     try {
         $connection = new PDO("mysql:host=".HOST.";dbname=".DATABASE, USER, PASSWORD); //initiate connection to database
     } catch (PDOException $e) { //catch incorrect entry

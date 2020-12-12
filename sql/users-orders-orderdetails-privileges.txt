@@ -28,7 +28,7 @@ CREATE TABLE `orderdetails` (
  CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`shoeID`) REFERENCES `shoes` (`shoeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
-orders	CREATE TABLE `orders` (
+	CREATE TABLE `orders` (
  `orderID` int(11) NOT NULL AUTO_INCREMENT,
  `userID` int(11) DEFAULT NULL,
  `orderDate` datetime NOT NULL,
@@ -39,7 +39,19 @@ orders	CREATE TABLE `orders` (
  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3000 DEFAULT CHARSET=utf8mb4
 
-users	CREATE TABLE `users` (
+CREATE TABLE `shoes` (
+ `shoeID` int(11) NOT NULL AUTO_INCREMENT,
+ `shoeBrand` varchar(50) NOT NULL,
+ `shoeName` varchar(100) NOT NULL,
+ `shoeSize` decimal(3,1) NOT NULL,
+ `price` decimal(10,2) NOT NULL,
+ `stock` int(11) NOT NULL,
+ `gender` varchar(100) NOT NULL,
+ `color` varchar(100) DEFAULT NULL,
+ PRIMARY KEY (`shoeID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8
+
+CREATE TABLE `users` (
  `userID` int(11) NOT NULL AUTO_INCREMENT,
  `username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
  `userpassword` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -48,4 +60,4 @@ users	CREATE TABLE `users` (
  `BillingAddress` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
  PRIMARY KEY (`userID`),
  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
